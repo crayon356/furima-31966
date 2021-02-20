@@ -23,6 +23,7 @@ has_many :buyers
 | name        | string     | null: false                    |
 | category_id | integer    | null: false                    |
 | state_id    | integer    | null: false                    |
+| province_id | integer    | null: false                    |
 | souryou_id  | integer    | null: false                    |
 | day_id      | integer    | null: false                    |
 | price       | integer    | null: false                    |
@@ -44,16 +45,16 @@ has_one_attached :image
 ### Association
 belong_to :item
 belong_to :user
-has_one :adress
+has_one :address
 
-## adressテーブル
+## addressテーブル
 
 | Column      | Type       | Options                        |
 | ----------- | ---------- | ------------------------------ |
 | postal_code | string     | null: false                    |
 | province_id | integer    | null: false                    |
 | city        | string     | null: false                    |
-| adress      | string     | null: false                    |
+| address     | string     | null: false                    |
 | building    | string     |                                |
 | telephone   | string     | null: false                    |
 | buyer       | references | null: false, foreign_key: true |
