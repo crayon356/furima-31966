@@ -8,8 +8,8 @@
 | encrypted_password | string  | null: false                |
 | family_name        | string  | null: false                |
 | first_name         | string  | null: false                |
-| family_name(kana)  | string  | null: false                |
-| first_name(kana)   | string  | null: false                |
+| family_name_kana   | string  | null: false                |
+| first_name_kana    | string  | null: false                |
 | birthday           | date    | null: false                |
 
 ### Association
@@ -20,18 +20,18 @@ has_many :buyers
 
 | Column      | Type       | Options                        |
 | ----------- | ---------- | ------------------------------ |
-| name_id     | integer    | null: false                    |
+| name        | string     | null: false                    |
 | category_id | integer    | null: false                    |
-| state_id    | integer    |                                |
-| souryou_id  | integer    |                                |
+| state_id    | integer    | null: false                    |
+| souryou_id  | integer    | null: false                    |
 | day_id      | integer    | null: false                    |
 | price       | integer    | null: false                    |
-| comment     | text       |                                |
+| comment     | text       | null: false                    |
 | user        | references | null: false, foreign_key: true |
 
 ### Association
 belongs_to :user
-has_one :buyers
+has_one :buyer
 has_one_attached :image
 
 ## buyersテーブル
@@ -50,13 +50,13 @@ has_one :adress
 
 | Column      | Type       | Options                        |
 | ----------- | ---------- | ------------------------------ |
-| postal_code | integer    | null: false                    |
-| province    | string     | null: false                    |
+| postal_code | string     | null: false                    |
+| province_id | integer    | null: false                    |
 | city        | string     | null: false                    |
-| adress      | integer    | null: false                    |
+| adress      | string     | null: false                    |
 | building    | string     |                                |
-| telephone   | integer    | null: false                    |
-| user        | references | null: false, foreign_key: true |
+| telephone   | string     | null: false                    |
+| buyer       | references | null: false, foreign_key: true |
 
 ### Association
-belong_to :buyers
+belong_to :buyer
