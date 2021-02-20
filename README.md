@@ -1,16 +1,16 @@
 #テーブル設計
 ## usersテーブル　
 
-| Column            | Type    | Options      |
-| ----------------- | ------- | ------------ |
-| nickname          | string  | null: false  |
-| email             | string  | null: false  |
-| password          | string  | null: false  |
-| family name       | string  | null: false  |
-| first name        | string  | null: false  |
-| family name(kana) | string  | null: false  |
-| first name(kana)  | string  | null: false  |
-| birthday          | date    | null: false  |
+| Column             | Type    | Options                    |
+| ------------------ | ------- | -------------------------- |
+| nickname           | string  | null: false                |
+| email              | string  | null: false, nuquie: true  |
+| encrypted_password | string  | null: false                |
+| family_name        | string  | null: false                |
+| first_name         | string  | null: false                |
+| family_name(kana)  | string  | null: false                |
+| first_name(kana)   | string  | null: false                |
+| birthday           | date    | null: false                |
 
 ### Association
 has_many :items
@@ -20,13 +20,14 @@ has_many :buyers
 
 | Column      | Type       | Options                        |
 | ----------- | ---------- | ------------------------------ |
-| name        | string     | null: false                    |
+| name_id     | integer    | null: false                    |
 | category_id | integer    | null: false                    |
+| state_id    | integer    |                                |
+| souryou_id  | integer    |                                |
+| day_id      | integer    | null: false                    |
 | price       | integer    | null: false                    |
-| text        | text       |                                |
-| user_id     | references | null: false, foreign_key: true |
-| state       | string     |                                |
-| souryou     | string     |                                |
+| comment     | text       |                                |
+| user        | references | null: false, foreign_key: true |
 
 ### Association
 belongs_to :user
@@ -37,8 +38,8 @@ has_one_attached :image
 
 | Column     | Type       | Options                        |
 | ---------- | ---------- | ------------------------------ |
-| item_id    | references | null: false, foreign_key: true |
-| user_id    | references | null: false, foreign_key: true |
+| item       | references | null: false, foreign_key: true |
+| user       | references | null: false, foreign_key: true |
 
 ### Association
 belong_to :item
@@ -49,9 +50,13 @@ has_one :adress
 
 | Column      | Type       | Options                        |
 | ----------- | ---------- | ------------------------------ |
-| postal code | string     |                                |
-| adress      | string     |                                |
-| user_id     | references | null: false, foreign_key: true |
+| postal_code | integer    | null: false                    |
+| province    | string     | null: false                    |
+| city        | string     | null: false                    |
+| adress      | integer    | null: false                    |
+| building    | string     |                                |
+| telephone   | integer    | null: false                    |
+| user        | references | null: false, foreign_key: true |
 
 ### Association
 belong_to :buyers
