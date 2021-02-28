@@ -6,7 +6,7 @@ class User < ApplicationRecord
     validates :nickname
     validates :email, uniqueness: { case_sensitive: true }
     
-    with_options format: { with: /\A[ぁ-んァ-ン一-龥]/ } do
+    with_options format: { with: /\A[ぁ-んァ-ン一-龥々]/ } do
       validates :family_name
       validates :first_name
     end
