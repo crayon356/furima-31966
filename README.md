@@ -43,8 +43,8 @@ has_one_attached :image
 | user       | references | null: false, foreign_key: true |
 
 ### Association
-belong_to :item
-belong_to :user
+belongs_to :item
+belongs_to :user
 has_one :address
 
 ## addressテーブル
@@ -60,4 +60,4 @@ has_one :address
 | buyer       | references | null: false, foreign_key: true |
 
 ### Association
-belong_to :buyer
+belongs_to :buyer
