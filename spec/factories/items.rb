@@ -6,9 +6,8 @@ FactoryBot.define do
     province_id     {2}
     souryou_id      {1}
     day_id          {2}
-    price           {'10000'}
+    price           {10000}
     comment         {Faker::Lorem.sentence}
-    #image           {Faker::Lorem.sentence}
     association :user
 
     after(:build) do |message|
