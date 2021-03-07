@@ -16,11 +16,6 @@ class Item < ApplicationRecord
 
   with_options presence: true do
     validates :name
-    validates :category_id
-    validates :state_id
-    validates :province_id
-    validates :souryou_id
-    validates :day_id
     validates :price, format: { with: /\A[0-9]+\z/ }, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999 }
     validates :comment
     validates :image
