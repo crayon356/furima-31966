@@ -2,7 +2,6 @@ class BuyersController < ApplicationController
   before_action :authenticate_user!, only: [:index, :create]
   before_action :item_find, only: [:index, :create]
   before_action :move_to_index, only: [:index, :create]
-  before_action :soldout_to_buy, only: [:index, :create]
 
   def index
     @buyer_address = BuyerAddress.new
@@ -38,18 +37,7 @@ class BuyersController < ApplicationController
   end
 
   def move_to_index
-    if current_user.id == @item.user_id
-      redirect_to root_path
-    end
-  end
-
-  def soldout_to_buy
-    @buyer = Buyer.all
-    @buyer.each do |buyer|  
-      if buyer.item_id == @item.id
-        redirect_to root_path
-      end
-    end
+    redirect_to root_path if (current_user.id == @item.user_id) || @item.buyer
   end
 end
 

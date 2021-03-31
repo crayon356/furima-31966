@@ -7,5 +7,7 @@ FactoryBot.define do
     building      {"フジテレビ"}
     telephone     {17098765432}
     province_id   {10}
+    user_id       {4}
+    item_id       {20}
   end
 end
