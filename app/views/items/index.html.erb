@@ -131,12 +131,13 @@
           <%= link_to item_path(item.id) do %>
           <div class='item-img-content'>
             <%= image_tag item.image, class: "item-img" %>
-
-            <%# 購入機能実装後に確認すること %>
-            <% if buyer_id =! '' %>
-              <div class='sold-out'>
-                <span>Sold Out!!</span>
-              </div>
+            <%#soldout 表示分岐 %>
+            <% @buyer.each do |buyer| %>
+              <% if buyer.item_id == item.id %>
+                <div class='sold-out'>
+                  <span>Sold Out!!</span>
+                </div>
+              <% end %>
             <% end %>
           </div>
               <div class='item-info'>
