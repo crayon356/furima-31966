@@ -57,10 +57,9 @@ class ItemsController < ApplicationController
     end
 
     def soldout_to_edit
-      @item = Item.find(params[:id])
-        if @item.buyer.present?
-          redirect_to root_path
-        end
+      if @item.buyer.present?
+        redirect_to root_path
+      end
     end
 end
 

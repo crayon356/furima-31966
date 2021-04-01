@@ -5,9 +5,7 @@ FactoryBot.define do
     city          {"港区"}
     address       {"台場2-11-33"}
     building      {"フジテレビ"}
-    telephone     {17098765432}
+    telephone     {'17098765432'}
     province_id   {10}
-    user_id       {4}
-    item_id       {20}
   end
 end
