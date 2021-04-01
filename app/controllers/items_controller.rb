@@ -2,9 +2,7 @@ class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update]
   before_action :set_item, only: [:show, :edit, :update, :destroy]
   before_action :move_to_index, only: [:edit, :update, :destroy]
-  
-  # 購入機能実装後に確認すること
-  #before_action :soldout_to_edit, only: [:edit, :destroy]
+  before_action :soldout_to_edit, only: [:edit, :destroy]
 
   def index
     @items = Item.order('created_at DESC')
@@ -58,12 +56,10 @@ class ItemsController < ApplicationController
       @item = Item.find(params[:id])
     end
 
-    #購入機能実装後に確認
-    #def soldout_to_edit
-      #@item = Item.find(params[:id])
-      #unless buyer_id.empty?
-        #redirect_to root_path
-      #end
-    #end
+    def soldout_to_edit
+      if @item.buyer.present?
+        redirect_to root_path
+      end
+    end
 end
 
